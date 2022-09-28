@@ -41,7 +41,7 @@ jobs:
         id: b2
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: "{{defaultContext}}:1.19-alpine"
+          context: "{{defaultContext}}:1.19.1-alpine"
           push: ${{ github.event_name != 'pull_request' }}
           tags: docker.io/zapote/go-aws:1.19.1-alpine
           labels: ${{ steps.meta.outputs.labels }}
