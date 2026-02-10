@@ -11,6 +11,21 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - '1.18'
+          - '1.19.1'
+          - '1.20'
+          - '1.21.3'
+          - '1.22.0'
+          - '1.23'
+          - '1.24.1'
+          - '1.25'
+          - '1.25.3'
+          - '1.25.5'
+          - '1.25.6'
+          - '1.25.7'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,100 +47,10 @@ jobs:
         with:
           images: docker.io/zapote/go-aws
 
-      - name: Build and push go-aws:1.18-alpine
-        id: b1
+      - name: Build and push go-aws:${{ matrix.version }}-alpine
         uses: docker/build-push-action@v6
         with:
-          context: '{{defaultContext}}:1.18-alpine'
+          context: '{{defaultContext}}:${{ matrix.version }}-alpine'
           push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.18-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Build and push go-aws:1.19.1-alpine
-        id: b2
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.19.1-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.19.1-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.20-alpine
-        id: b3
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.20-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.20-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.21.3-alpine
-        id: b4
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.21.3-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.21.3-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.22.0-alpine
-        id: b5
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.22.0-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.22.0-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.23-alpine
-        id: b6
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.23-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.23-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.24.1-alpine
-        id: b7
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.24.1-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.24.1-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.25-alpine
-        id: b8
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.25-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.25-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.25.3-alpine
-        id: b9
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.25.3-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.25.3-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.25.5-alpine
-        id: b10
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.25.5-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.25.5-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.25.6-alpine
-        id: b11
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.25.6-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.25.6-alpine
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push go-aws:1.25.7-alpine
-        id: b12
-        uses: docker/build-push-action@v6
-        with:
-          context: '{{defaultContext}}:1.25.7-alpine'
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: docker.io/zapote/go-aws:1.25.7-alpine
+          tags: docker.io/zapote/go-aws:${{ matrix.version }}-alpine
           labels: ${{ steps.meta.outputs.labels }}
