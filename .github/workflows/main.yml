@@ -115,3 +115,11 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: docker.io/zapote/go-aws:1.25.6-alpine
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push go-aws:1.25.7-alpine
+        id: b12
+        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        with:
+          context: '{{defaultContext}}:1.25.7-alpine'
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: docker.io/zapote/go-aws:1.25.7-alpine
+          labels: ${{ steps.meta.outputs.labels }}
