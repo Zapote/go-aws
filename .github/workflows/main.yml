@@ -13,15 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -34,7 +34,7 @@ jobs:
 
       - name: Build and push go-aws:1.18-alpine
         id: b1
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.18-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -43,7 +43,7 @@ jobs:
 
       - name: Build and push go-aws:1.19.1-alpine
         id: b2
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.19.1-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -51,7 +51,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.20-alpine
         id: b3
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.20-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -59,7 +59,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.21.3-alpine
         id: b4
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.21.3-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -67,7 +67,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.22.0-alpine
         id: b5
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.22.0-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -75,7 +75,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.23-alpine
         id: b6
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.23-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -83,7 +83,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.24.1-alpine
         id: b7
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.24.1-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -91,7 +91,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.25-alpine
         id: b8
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.25-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -99,7 +99,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.25.3-alpine
         id: b9
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.25.3-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -107,7 +107,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.25.5-alpine
         id: b10
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.25.5-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -115,7 +115,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.25.6-alpine
         id: b11
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.25.6-alpine'
           push: ${{ github.event_name != 'pull_request' }}
@@ -123,7 +123,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Build and push go-aws:1.25.7-alpine
         id: b12
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v6
         with:
           context: '{{defaultContext}}:1.25.7-alpine'
           push: ${{ github.event_name != 'pull_request' }}
