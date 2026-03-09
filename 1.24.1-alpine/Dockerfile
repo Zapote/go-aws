@@ -1,4 +1,4 @@
-FROM golang:1.24.1-alpine
+FROM golang:1.26.1-alpine
 
 WORKDIR /setup
 RUN apk update && apk add --no-cache curl jq gettext unzip aws-cli docker bash git
