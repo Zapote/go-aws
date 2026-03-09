@@ -1,5 +1,6 @@
 FROM golang:1.26.1-alpine
 
+# trigger initial build
 WORKDIR /setup
 RUN apk update && apk add --no-cache curl jq gettext unzip aws-cli docker bash git
 RUN KUBECTL_VERSION="$(curl -L -s https://dl.k8s.io/release/stable.txt)" \
