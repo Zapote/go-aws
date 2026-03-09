@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.24.1-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.25-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.25.3-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.25.5-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.25.6-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.25.7-alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/1.26.1-alpine"
+    schedule:
+      interval: "weekly"
